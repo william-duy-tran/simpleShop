@@ -1,0 +1,12 @@
+// require('./app/components/list-item/list-item.component.js');
+// require('./app/components/list-item/list-item.module.js');
+// require('./app/components/version/interpolate-filter_test.js');
+// require('./app/components/version/interpolate-filter.js');
+// require('./app/components/version/version_test.js');
+// require('./app/components/version/version-directive_test.js');
+// require('./app/components/version/version-directive.js');
+// require('./app/components/version/version.js');
+require('./app/components/view1/view1_test.js');
+require('./app/components/view1/view1.js');
+require('./app/components/view2/view2_test.js');
+require('./app/components/view2/view2.js');
