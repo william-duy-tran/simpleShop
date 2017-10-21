@@ -6,6 +6,7 @@ angular.module('shopApp', [
   'kendo.directives',
   'shopApp.listItem',
   'shopApp.listOrder',
+  'localization',
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
@@ -20,3 +21,5 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
 require("./components/list-item/list-item.component");
 require("./components/list-order/list-order.component");
+require("./app.localization");
+require("./gridCommonConf");
