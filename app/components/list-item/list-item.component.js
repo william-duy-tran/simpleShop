@@ -19,9 +19,9 @@ angular.module("shopApp.listItem",[]).component("listItem", {
 		}
 		var buildDataSource = function() {
 			return {
-				type:"odata",
+				type:"json",
 				transport: {
-					read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Employees",
+					read: apiHost+"/product"
 				},
 				schema: {
             model: {
