@@ -4,7 +4,7 @@ angular.module("shopApp.listItem", []).component("listItem", {
 	controller: ['$scope','GridCommonConf','$filter', function ($scope, gridCommonConf, $filter) {
 		var comp = this;
 		
-		comp.productFilter = {refreshCount:0};
+		comp.orderFilter = {refreshCount:0};
 		var buildColumns = function () {
 			return [
 				{title:"id", field:"id"},
@@ -45,11 +45,11 @@ angular.module("shopApp.listItem", []).component("listItem", {
 		};
 		
 		var refreshGrid = function(e) {
-			comp.productFilter.refreshCount++;
+			comp.orderFilter.refreshCount++;
 			$scope.$apply();
 			gridCommonConf.showMsgFromCompleteResponse(e);
 		}
-		var dataSource= gridCommonConf.buildGridDataSource(apiHost+"/product",model, comp.productFilter);
+		var dataSource= gridCommonConf.buildGridDataSource(apiHost+"/product",model, comp.orderFilter);
 		dataSource.transport.create.complete = refreshGrid;
 		dataSource.transport.destroy.complete = refreshGrid;
 		dataSource.transport.update.complete = refreshGrid;
