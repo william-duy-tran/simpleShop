@@ -18,10 +18,10 @@
     }
   </style>
   <script>
-    var apiHost = "http://localhost:8082/simpleShop/api"
+    const apiHost = "http://localhost:8082/simpleShop/api"
   </script>
 </head>
-<body>
+<body ng-controller="HomeController">>
   <ul class="menu">
     <li><a href="#!/listProduct">Product</a></li>
     <li><a href="#!/listOrder">Order</a></li>
@@ -31,7 +31,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+  <div ng-view>
+    <div ng-init="checkLogin()"/>
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -39,9 +41,10 @@
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
   <script src="libs/kendo.all.min.js"></script>
   <script src="libs/sweetalert.min.js"></script>
-  <!--<script src="dist/bundle.js"></script>-->
-  <script src="assets/app.bundle.js"></script>
+  <Script src="assets/app.bundle.js"></Script>
+
 </body>
 </html>

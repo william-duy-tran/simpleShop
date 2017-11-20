@@ -1,25 +1,33 @@
 /* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+* {
+    font-size: 12px;
+    -box-sizing:border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
-
-.menu:before {
-  content: "[";
+.loginBackground {
+    background-image: url("content/bg.jpg");
+    position: relative;
 }
-
-.menu:after {
-  content: "]";
+input[type=text],input[type=password] {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
 }
-
-.menu > li {
-  display: inline;
+button {
+    padding:5px;
+    border:1px solid white;
+    border-radius: 5px;
+    padding:5px 20px;
 }
-
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.loginContainer {
+background-color:darkgray;
+    opacity: 0.3;
+    width:30%;
+}
+.loginForm {
+    padding:20px;
+    margin:auto;
+    border: 1px solid darkgray;
 }

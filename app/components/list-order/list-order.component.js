@@ -1,7 +1,9 @@
 'use strict';
-angular.module("shopApp.listOrder", []).component("listOrder", {
+angular.module("shopApp.listOrder", [
+]).component("listOrder", {
 	templateUrl: "./components/list-order/list-order.template.html",
-	controller: ['$scope', 'GridCommonConf', '$filter', function ($scope, gridCommonConf, $filter) {
+	controller: ['$scope', 'GridCommonConf', '$filter', 'OrderService',
+		function ($scope, gridCommonConf, $filter, orderService) {
 		var comp = this;
 		
 		var comp = this;
@@ -15,9 +17,38 @@ angular.module("shopApp.listOrder", []).component("listOrder", {
 					template: function (dataItem) {
 						return dataItem.productName;
 					},
-					// editor: function (container, option) {
-					//
-					// }
+					editor: function (container, options) {
+						
+						var msg = "Please choose a product"
+						var el = '<input required name="productId" data-required-msg="'+msg+'"/>'
+						var	elName = $('<input type="text" name="productName"/>')
+						var input = $(el);
+						input.appendTo(container);
+						elName.appendTo(container);
+						orderService.orderRes.getAvailableProducts().$promise.then(function (res) {
+							var handleSelect = function(e) {
+									console.log(e.item);
+									console.log(res)
+									console.log(options.model)
+									options.model.productName = e.item.name
+							}
+							
+							input.kendoDropDownList({
+								optionLabel: $filter('i18n')('Select...'),
+								dataSource: res.data,
+								dataTextField: "name",
+								dataValueField: "_id",
+								valuePrimitive: true,
+								value: options.model.productId,
+								select: handleSelect,
+								template: function(dataItem) {
+									return dataItem.name+": "+dataItem.color+": "+dataItem.quality;
+								}
+							});
+						});
+						var tooltipElement = $('<span class="k-invalid-msg" data-for="' + options.field + '"></span>');
+						tooltipElement.appendTo(container);
+					}
 				},
 				{title: "Price", field: "price"},
 				{title: "Quality", field: "quality"},
@@ -71,3 +102,4 @@ angular.module("shopApp.listOrder", []).component("listOrder", {
 		
 	}]
 })
+require("./list-order.service.js");
